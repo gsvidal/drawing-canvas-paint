@@ -8,7 +8,6 @@ var pencilButton = document.querySelector(".pencil")
 var eraserButton = document.querySelector(".eraser")
 var colorPickedVal, thicknessVal = thickness.value;
 var lastPickedVal = "#000000";
-// console.log(thickness.value)
 
 colorPicked.addEventListener("input", colorChanged);
 thickness.addEventListener("input", thicknessChanged);
@@ -20,38 +19,38 @@ function pincel() {
   eraserButton.classList.remove("eraser_activated");
   pencilButton.classList.remove("pencil_desactivated");
   colorPickedVal = lastPickedVal;
+  
 }
 
 function colorChanged() {
   colorPickedVal = colorPicked.value;
   lastPickedVal = colorPickedVal;
-  // console.log(colorPickedVal);
 }
 function thicknessChanged() {
   thicknessVal = thickness.value;
-  // console.log(thicknessVal);
 }
 function eraser() {
-  // if(!cuadrito.classList.contains("eraser_cursor")) {
     cuadrito.classList.add("eraser_cursor");
     eraserButton.classList.add("eraser_activated");
     pencilButton.classList.add("pencil_desactivated");
     colorPickedVal = "#ffffff";
-  // } 
 }
-
-// console.log(body.offsetWidth)
+//Mouse movements logic
 cuadrito.width = body.offsetWidth - 32;
 cuadrito.height = 700;
 
 let x= 0, y= 0;
 let isDrawing = false;
+console.log(isDrawing)
+
 
 cuadrito.addEventListener("mousedown", pressMouse);
 function pressMouse(event) {
   x = event.offsetX;
   y = event.offsetY;
   isDrawing = true;
+  console.log(isDrawing)
+  dibujarLinea(colorPickedVal, x, y, x, y, papel);
 }
 
 cuadrito.addEventListener("mousemove", moveMouse);
@@ -60,6 +59,8 @@ function moveMouse(event) {
     dibujarLinea(colorPickedVal, x, y, event.offsetX, event.offsetY, papel);
     x = event.offsetX;
     y = event.offsetY;
+    console.log("x:" + x);
+    console.log("y:" + y);
   }
 }
 
