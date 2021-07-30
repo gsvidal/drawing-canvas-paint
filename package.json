@@ -1,0 +1,16 @@
+{
+  "name": "online-paint",
+  "version": "1.0.0",
+  "description": "An online tool for painting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "paint",
+    "canvas",
+    "online"
+  ],
+  "author": "Gonzalo Vidal",
+  "license": "ISC"
+}
