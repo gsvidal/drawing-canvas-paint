@@ -6,6 +6,10 @@
 
 body {
   background-color: rgb(244, 255, 251);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: black;
 }
 
 main {
@@ -16,19 +20,89 @@ main {
   margin: 1rem;
 }
 
-main p {
+.instructions {
+  padding-top: 15px;
   text-align: center;
   color: blueviolet
 }
-#area_de_dibujo {
+.area_draw {
   background-color: white;
   border: 1px solid rgb(190, 190, 190);
   border-radius: 5px;
+  cursor: url("./assets/pencil.png") 3 45, move;
+}
+
+.area_color {
+  width: 100vw;
+  padding: 10px;
+  background-color: rgb(255, 243, 230);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.area_thickness {
+  width: 100vw;
+  padding: 10px;
+
+  background-color: rgb(255, 252, 228);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+}
+.input_thickness {
+  margin-left: 10px;
+}
+
+.input_color {
+  margin-left: 10px;
+}
+
+.buttons-container {
+  width: 100vw;
+  background-color: rgb(240, 255, 232);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pencil, .eraser {
+  margin: 20px;
+  width: 40px;
+  height: 30px;
+}
+.pencil {
+  background-color: pink;
+}
+.pencil.pencil_desactivated {
+  background-color: rgb(233, 233, 233);
+}
+
+.pencil img {
+  width: 70%;
+}
+
+.eraser {
+  background-color: rgb(233, 233, 233);
+}
+
+.eraser.eraser_activated {
+  background-color: pink;
+}
+
+.eraser img {
+  width: 70%;
+}
+
+.area_draw.eraser_cursor {
+  cursor: pointer;
+  cursor: url("./assets/eraser.png") 0 26, move;
+
 }
 
 @media screen and (min-width: 768px) {
   body {
     background-color: rgb(244, 255, 251);
   }
-  
 }

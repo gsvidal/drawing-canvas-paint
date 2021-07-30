@@ -1,17 +1,46 @@
-var cuadrito = document.getElementById("area_de_dibujo");
+var cuadrito = document.querySelector(".area_draw");
 var papel = cuadrito.getContext("2d");
 var body = document.querySelector("body");
-var colorPicked = document.querySelector("input");
-let colorPickedVal;
+var colorPicked = document.querySelector(".input_color");
+var thickness = document.querySelector(".input_thickness");
+
+var pencilButton = document.querySelector(".pencil")
+var eraserButton = document.querySelector(".eraser")
+var colorPickedVal, thicknessVal = thickness.value;
+var lastPickedVal = "#000000";
+// console.log(thickness.value)
 
 colorPicked.addEventListener("input", colorChanged);
+thickness.addEventListener("input", thicknessChanged);
+eraserButton.addEventListener("click", eraser);
+pencilButton.addEventListener("click", pincel);
+
+function pincel() {
+  cuadrito.classList.remove("eraser_cursor");
+  eraserButton.classList.remove("eraser_activated");
+  pencilButton.classList.remove("pencil_desactivated");
+  colorPickedVal = lastPickedVal;
+}
 
 function colorChanged() {
   colorPickedVal = colorPicked.value;
-  console.log(colorPickedVal);
+  lastPickedVal = colorPickedVal;
+  // console.log(colorPickedVal);
+}
+function thicknessChanged() {
+  thicknessVal = thickness.value;
+  // console.log(thicknessVal);
+}
+function eraser() {
+  // if(!cuadrito.classList.contains("eraser_cursor")) {
+    cuadrito.classList.add("eraser_cursor");
+    eraserButton.classList.add("eraser_activated");
+    pencilButton.classList.add("pencil_desactivated");
+    colorPickedVal = "#ffffff";
+  // } 
 }
 
-console.log(body.offsetWidth)
+// console.log(body.offsetWidth)
 cuadrito.width = body.offsetWidth - 32;
 cuadrito.height = 700;
 
@@ -43,7 +72,8 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo)
 {
   lienzo.beginPath();
   lienzo.strokeStyle = color;
-  lienzo.lineWidth = 1;
+  lienzo.lineWidth = thicknessVal;
+  lienzo.lineCap = "round";
   lienzo.moveTo(xinicial, yinicial);
   lienzo.lineTo(xfinal, yfinal);
   lienzo.stroke();
